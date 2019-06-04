@@ -13,8 +13,4 @@ export class Beer {
   country: string;
   alcoholByVolume: number;
   category: BeerCategory;
-
-  get isAlcoholLess() {
-    return this.alcoholByVolume <= .3;
-  }
 }
