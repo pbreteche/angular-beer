@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Beer, BeerCategory } from '../../beer';
+import {Component, Input, OnInit} from '@angular/core';
+import { Beer } from '../../beer';
 
 @Component({
   selector: 'app-beer-detail',
@@ -8,12 +8,7 @@ import { Beer, BeerCategory } from '../../beer';
 })
 export class BeerDetailComponent implements OnInit {
 
-  beer: Beer = {
-    name: 'Mazout',
-    country: 'FR',
-    alcoholByVolume: 11.5,
-    category: BeerCategory.Stout
-  };
+  @Input() beer: Beer;
 
   constructor() { }
 

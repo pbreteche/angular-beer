@@ -3,7 +3,7 @@
     Welcome to {{ title }}!
   </h1>
   <div class="main">
-    <app-beer-list></app-beer-list>
-    <app-beer-detail></app-beer-detail>
+    <app-beer-list [beers]="beers" (beerSelected)="setCurrentBeer($event)"></app-beer-list>
+    <app-beer-detail [beer]="currentBeer"></app-beer-detail>
   </div>
 </div>

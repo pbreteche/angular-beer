@@ -5,9 +5,10 @@ ul {
   padding: 0;
 }
 
-li {
+li a {
+  display: block;
   padding: .5em;
-
+  cursor: pointer;
   &:hover {
     background: $hoverColor;
   }

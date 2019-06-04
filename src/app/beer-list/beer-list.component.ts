@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Beer } from '../../beer';
-import beers from '../../beer-data';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Beer} from '../../beer';
 
 @Component({
   selector: 'app-beer-list',
@@ -9,11 +8,15 @@ import beers from '../../beer-data';
 })
 export class BeerListComponent implements OnInit {
 
-  beers: Beer[] = beers;
+  @Input() beers: Beer[];
+  @Output() beerSelected = new EventEmitter<Beer>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  select(beer: Beer) {
+    this.beerSelected.emit(beer);
+  }
 }
