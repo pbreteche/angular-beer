@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Beer, BeerCategory} from '../beer';
 
 @Component({
   selector: 'app-root',

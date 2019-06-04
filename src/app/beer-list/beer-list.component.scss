@@ -1,0 +1,14 @@
+$hoverColor: aqua;
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: .5em;
+
+  &:hover {
+    background: $hoverColor;
+  }
+}
