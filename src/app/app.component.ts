@@ -8,11 +8,5 @@ import {Beer, BeerCategory} from '../beer';
 })
 export class AppComponent {
   title = 'Les bières du monde';
-  beer: Beer = Object.assign(new Beer(), {
-    name: 'Mazout',
-    country: 'FR',
-    alcoholByVolume: 11.5,
-    category: BeerCategory.Stout
-  });
 
 }
