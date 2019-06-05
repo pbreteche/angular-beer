@@ -1,11 +1,11 @@
 export enum BeerCategory {
-  Ale,
-  PaleAle,
-  IndianPaleAle,
-  Lambic,
-  Weissbier,
-  Stout,
-  Porter
+  Ale = 'Ale',
+  PaleAle = 'Pale Ale',
+  IndianPaleAle = 'I.P.A.',
+  Lambic = 'Lambic',
+  Weissbier = 'Weissbier',
+  Stout = 'Stout',
+  Porter = 'Porter',
 }
 
 export class Beer {

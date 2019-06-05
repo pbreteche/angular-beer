@@ -5,5 +5,6 @@
   <div class="main">
     <app-beer-list [beers]="beers" (beerSelected)="setCurrentBeer($event)"></app-beer-list>
     <app-beer-detail [beer]="currentBeer"></app-beer-detail>
+    <app-beer-form (beerCreated)="add($event)"></app-beer-form>
   </div>
 </div>

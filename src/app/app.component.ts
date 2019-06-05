@@ -15,4 +15,8 @@ export class AppComponent {
   setCurrentBeer(beer: Beer) {
     this.currentBeer = beer;
   }
+
+  add(beer: Beer) {
+    this.beers.unshift(beer);
+  }
 }
