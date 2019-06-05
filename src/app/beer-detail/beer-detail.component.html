@@ -1,5 +1,5 @@
 
-<article>
+<article *ngIf="beer">
   <h1>{{ beer.name }}</h1>
   <dl>
     <dt>Pays</dt><dd>{{ beer.country }}</dd>
@@ -7,3 +7,4 @@
     <dt>Teneur en alcool</dt><dd>{{ beer.alcoholByVolume }}</dd>
   </dl>
 </article>
+<p *ngIf="!beer">← Veuillez sélectionner une bière dans la liste à gauche ←</p>

@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit } from '@angular/core';
 import {Beer} from '../../beer';
+import {CurrentBeerService} from '../current-beer.service';
 
 @Component({
   selector: 'app-beer-list',
@@ -9,14 +10,13 @@ import {Beer} from '../../beer';
 export class BeerListComponent implements OnInit {
 
   @Input() beers: Beer[];
-  @Output() beerSelected = new EventEmitter<Beer>();
 
-  constructor() { }
+  constructor(private currentBeer: CurrentBeerService) { }
 
   ngOnInit() {
   }
 
   select(beer: Beer) {
-    this.beerSelected.emit(beer);
+    this.currentBeer.beer = beer;
   }
 }

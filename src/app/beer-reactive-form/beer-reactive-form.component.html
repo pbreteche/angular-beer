@@ -1,5 +1,4 @@
 <form [formGroup]="form" (ngSubmit)="createBeer()">
-  <p>{{ form.value | json }}</p>
   <div>
     <label for="beer.name">Nom</label>
     <input type="text" id="beer.name" formControlName="name"

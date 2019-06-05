@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Beer, BeerCategory} from '../../beer';
+import {CurrentBeerService} from '../current-beer.service';
 
 @Component({
   selector: 'app-beer-reactive-form',
@@ -13,7 +14,7 @@ export class BeerReactiveFormComponent implements OnInit {
   categoryOptions = BeerCategory;
   @Output() beerCreated = new EventEmitter<Beer>();
 
-  constructor() { }
+  constructor(private currentBeer: CurrentBeerService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -33,6 +34,7 @@ export class BeerReactiveFormComponent implements OnInit {
 
   createBeer() {
     this.beerCreated.emit(this.form.value);
+    this.currentBeer.beer = this.form.value;
     this.form.reset();
   }
 }

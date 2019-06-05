@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Beer, BeerCategory} from '../../beer';
+import {CurrentBeerService} from '../current-beer.service';
 
 @Component({
   selector: 'app-beer-form',
@@ -12,13 +13,14 @@ export class BeerFormComponent implements OnInit {
   newBeer = new Beer();
   categoryOptions = BeerCategory;
 
-  constructor() { }
+  constructor(private currentBeer: CurrentBeerService) { }
 
   ngOnInit() {
   }
 
   createBeer() {
     this.beerCreated.emit(this.newBeer);
+    this.currentBeer.beer = this.newBeer;
     this.newBeer = new Beer();
   }
 }
