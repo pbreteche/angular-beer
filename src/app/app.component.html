@@ -2,9 +2,10 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <p *ngIf="isDisplayed">Message affiché</p>
   <div class="main">
     <app-beer-list [beers]="beers" (beerSelected)="setCurrentBeer($event)"></app-beer-list>
     <app-beer-detail [beer]="currentBeer"></app-beer-detail>
-    <app-beer-form (beerCreated)="add($event)"></app-beer-form>
+    <app-beer-reactive-form (beerCreated)="add($event)"></app-beer-reactive-form>
   </div>
 </div>

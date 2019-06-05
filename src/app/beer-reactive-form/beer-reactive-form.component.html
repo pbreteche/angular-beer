@@ -1,3 +1,29 @@
-<p>
-  beer-reactive-form works!
-</p>
+<form [formGroup]="form" (ngSubmit)="createBeer()">
+  <p>{{ form.value | json }}</p>
+  <div>
+    <label for="beer.name">Nom</label>
+    <input type="text" id="beer.name" formControlName="name"
+    >
+  </div>
+  <div>
+    <label for="beer.country">Pays</label>
+    <input type="text" id="beer.country" placeholder="FR"
+           formControlName="country"
+    >
+  </div>
+  <div>
+    <label for="beer.alcoholByVolume">Teneur en alcool</label>
+    <input type="number" id="beer.alcoholByVolume"
+           placeholder="4.5" formControlName="alcoholByVolume"
+    >
+  </div>
+  <div>
+    <label for="beer.category">Catégorie</label>
+    <select id="beer.category" formControlName="category"
+    >
+      <option *ngFor="let option of categoryOptions | keyvalue"
+              [ngValue]="option.key">{{ option.value }}</option>
+    </select>
+  </div>
+  <button [disabled]="form.invalid">Enregistrer</button>
+</form>

@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'Les bières du monde';
   beers: Beer[] = beers;
   currentBeer = beers[0];
+  isDisplayed = true;
 
   setCurrentBeer(beer: Beer) {
     this.currentBeer = beer;
@@ -18,5 +19,6 @@ export class AppComponent {
 
   add(beer: Beer) {
     this.beers.unshift(beer);
+    this.currentBeer = beer;
   }
 }
