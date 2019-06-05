@@ -1,6 +1,7 @@
-import {Component, Input, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Beer} from '../../beer';
 import {CurrentBeerService} from '../current-beer.service';
+import {BeerListService} from '../beer-list.service';
 
 @Component({
   selector: 'app-beer-list',
@@ -9,14 +10,19 @@ import {CurrentBeerService} from '../current-beer.service';
 })
 export class BeerListComponent implements OnInit {
 
-  @Input() beers: Beer[];
-
-  constructor(private currentBeer: CurrentBeerService) { }
+  constructor(
+    private currentBeer: CurrentBeerService,
+    private beerList: BeerListService
+  ) { }
 
   ngOnInit() {
   }
 
   select(beer: Beer) {
     this.currentBeer.beer = beer;
+  }
+
+  get beers() {
+    return this.beerList.beers;
   }
 }

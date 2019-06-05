@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {Beer} from '../beer';
-import beers from '../beer-data';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +7,4 @@ import beers from '../beer-data';
 })
 export class AppComponent {
   title = 'Les bières du monde';
-  beers: Beer[] = beers;
-  currentBeer = beers[0];
-
-  add(beer: Beer) {
-    this.beers.unshift(beer);
-    this.currentBeer = beer;
-  }
 }

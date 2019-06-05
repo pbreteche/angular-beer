@@ -1,6 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Beer, BeerCategory} from '../../beer';
-import {CurrentBeerService} from '../current-beer.service';
+import {BeerListService} from '../beer-list.service';
 
 @Component({
   selector: 'app-beer-form',
@@ -9,18 +9,18 @@ import {CurrentBeerService} from '../current-beer.service';
 })
 export class BeerFormComponent implements OnInit {
 
-  @Output() beerCreated = new EventEmitter<Beer>();
   newBeer = new Beer();
   categoryOptions = BeerCategory;
 
-  constructor(private currentBeer: CurrentBeerService) { }
+  constructor(
+    private beerList: BeerListService
+  ) { }
 
   ngOnInit() {
   }
 
   createBeer() {
-    this.beerCreated.emit(this.newBeer);
-    this.currentBeer.beer = this.newBeer;
+    this.beerList.add(this.newBeer);
     this.newBeer = new Beer();
   }
 }
