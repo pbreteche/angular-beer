@@ -10,19 +10,18 @@ import {BeerListService} from '../beer-list.service';
 })
 export class BeerListComponent implements OnInit {
 
+  beers: Beer[] = [];
+
   constructor(
     private currentBeer: CurrentBeerService,
     private beerList: BeerListService
   ) { }
 
   ngOnInit() {
+    this.beerList.beersObservable.subscribe((b: Beer[]) => this.beers = b);
   }
 
   select(beer: Beer) {
     this.currentBeer.beer = beer;
-  }
-
-  get beers() {
-    return this.beerList.beers;
   }
 }

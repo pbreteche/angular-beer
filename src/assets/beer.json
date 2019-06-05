@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Mazout",
+    "country": "FR",
+    "alcoholByVolume": 11.5,
+    "category": "Stout"
+  },
+  {
+    "name": "Gamma Ray",
+    "country": "UK",
+    "alcoholByVolume": 5.4,
+    "category": "Pale Ale"
+  },
+  {
+    "name": "Summer Haze",
+    "country": "BE",
+    "alcoholByVolume": 3.8,
+    "category": "Pale Ale"
+  },
+  {
+    "name": "Oroshi",
+    "country": "FR",
+    "alcoholByVolume": 5,
+    "category": "Weissbier"
+  }
+]
