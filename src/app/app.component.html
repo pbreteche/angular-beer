@@ -6,6 +6,7 @@
     <ul>
       <li><a routerLink="beer-list" [routerLinkActive]="'active'">Liste</a></li>
       <li><a routerLink="new-beer" [routerLinkActive]="'active'">ajouter</a></li>
+      <li *ngIf="loginService.isLoggedIn"><a (click)="logout()">Se déconnecter</a></li>
     </ul>
   </nav>
   <router-outlet></router-outlet>

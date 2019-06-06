@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {InjectionToken, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
@@ -12,15 +12,16 @@ import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { MyCurrencyPipe } from './my-currency.pipe';
 import {RouterModule, Routes} from '@angular/router';
-
-const DEFAULT_BEER_NAME = new InjectionToken('defaultBeerName');
+import {AuthGuard} from './auth.guard';
+import { LoginComponent } from './login/login.component';
 
 registerLocaleData(localeFr, 'fr');
 
 const appRoutes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'beer-list', component: BeerListComponent },
   { path: 'beer/:name', component: BeerDetailComponent },
-  { path: 'new-beer', component: BeerReactiveFormComponent },
+  { path: 'new-beer', component: BeerReactiveFormComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/beer-list', pathMatch: 'full'}
 ];
 
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     BeerListComponent,
     BeerFormComponent,
     BeerReactiveFormComponent,
-    MyCurrencyPipe
+    MyCurrencyPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
