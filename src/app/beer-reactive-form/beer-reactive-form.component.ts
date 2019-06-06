@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BeerCategory} from '../../beer';
 import {BeerListService} from '../beer-list.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-beer-reactive-form',
@@ -14,7 +15,8 @@ export class BeerReactiveFormComponent implements OnInit {
   categoryOptions = BeerCategory;
 
   constructor(
-    private beerList: BeerListService
+    private beerList: BeerListService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -35,6 +37,6 @@ export class BeerReactiveFormComponent implements OnInit {
 
   createBeer() {
     this.beerList.add(this.form.value);
-    this.form.reset();
+    this.router.navigate(['/beer', this.form.get('name').value]);
   }
 }

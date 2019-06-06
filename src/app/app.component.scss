@@ -19,4 +19,9 @@ a {
   &:hover {
     background-color: aqua;
   }
+
+  &.active {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }

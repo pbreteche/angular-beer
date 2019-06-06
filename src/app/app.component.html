@@ -4,8 +4,8 @@
   </h1>
   <nav>
     <ul>
-      <li><a routerLink="beer-list">Liste</a></li>
-      <li><a routerLink="new-beer">ajouter</a></li>
+      <li><a routerLink="beer-list" [routerLinkActive]="'active'">Liste</a></li>
+      <li><a routerLink="new-beer" [routerLinkActive]="'active'">ajouter</a></li>
     </ul>
   </nav>
   <router-outlet></router-outlet>
