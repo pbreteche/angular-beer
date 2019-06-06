@@ -9,7 +9,7 @@ import {catchError} from 'rxjs/operators';
 })
 export class BeerListService {
 
-  beers: Beer[];
+  beers: Beer[] = [];
   beersSubject = new BehaviorSubject<Beer[]>([]);
 
   constructor(
@@ -19,11 +19,16 @@ export class BeerListService {
   }
 
   init() {
-    this.http.get('assets/beer.json')
-      .subscribe((beersData: Beer[]) => {
-        this.beers = beersData;
-        this.beersSubject.next(this.beers);
-      });
+    // on décalle l'appel ajax juste pour vérifier que l'affichage
+    // se rafraichit bien une fois la donnée réceptionnée
+    setTimeout(() => {
+      this.http.get('assets/beer.json')
+        .subscribe((beersData: Beer[]) => {
+          this.beers = beersData;
+          this.beersSubject.next(this.beers);
+        });
+    }, 1000);
+
     this.http.get('assets/beer.json').toPromise()
       .then((beersData: Beer[]) => {
         console.log(beersData);
@@ -42,5 +47,9 @@ export class BeerListService {
       console.log(err);
       return of(err);
     })).subscribe(() => {});
+  }
+
+  getBeerByName(name: string): Beer {
+    return this.beers.find((elt) => elt.name === name);
   }
 }

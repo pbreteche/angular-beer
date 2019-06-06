@@ -1,6 +1,6 @@
 <ul>
   <li *ngFor="let beer of beers">
-    <a>{{ beer.name }}</a>
+    <a [routerLink]="['/beer', beer.name ]">{{ beer.name }}</a>
   </li>
 </ul>
 <p>{{ today | date:'fullDate':'+0200':'fr' }}</p>
