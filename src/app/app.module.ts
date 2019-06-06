@@ -8,18 +8,10 @@ import {BeerDetailComponent} from './beer-detail/beer-detail.component';
 import {BeerListComponent} from './beer-list/beer-list.component';
 import {BeerFormComponent} from './beer-form/beer-form.component';
 import {BeerReactiveFormComponent} from './beer-reactive-form/beer-reactive-form.component';
-import {CurrentBeerService} from './current-beer.service';
-import {BeerCategory} from '../beer';
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { MyCurrencyPipe } from './my-currency.pipe';
 import {RouterModule, Routes} from '@angular/router';
-
-const currentBeerFactory = (beerName: string) => {
-  const service = new CurrentBeerService();
-  service.beer = { name: beerName, country: 'pays', alcoholByVolume: 6, category: BeerCategory.Lambic };
-  return service;
-};
 
 const DEFAULT_BEER_NAME = new InjectionToken('defaultBeerName');
 
@@ -49,8 +41,6 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    { provide: CurrentBeerService, useFactory: currentBeerFactory, deps: [DEFAULT_BEER_NAME] },
-    { provide: DEFAULT_BEER_NAME, useValue: 'Kro' }
   ],
   bootstrap: [AppComponent]
 })
