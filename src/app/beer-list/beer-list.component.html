@@ -1,5 +1,7 @@
 <ul>
-  <li *ngFor="let beer of beers" [class.selected]="beer == currentBeer.beer"><a (click)="select(beer)">{{ beer.name }}</a></li>
+  <li *ngFor="let beer of beers" [class.selected]="beer == currentBeer.beer">
+    <a (click)="select(beer)">{{ beer.name }}</a>
+  </li>
 </ul>
 <p>{{ today | date:'fullDate':'+0200':'fr' }}</p>
 <p>{{ 1036576789.9 | currency:'EUR':'symbol':'0.2-2':'fr' }}</p>

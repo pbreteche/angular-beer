@@ -13,6 +13,7 @@ import {BeerCategory} from '../beer';
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { MyCurrencyPipe } from './my-currency.pipe';
+import {RouterModule, Routes} from '@angular/router';
 
 const currentBeerFactory = (beerName: string) => {
   const service = new CurrentBeerService();
@@ -23,6 +24,13 @@ const currentBeerFactory = (beerName: string) => {
 const DEFAULT_BEER_NAME = new InjectionToken('defaultBeerName');
 
 registerLocaleData(localeFr, 'fr');
+
+const appRoutes: Routes = [
+  { path: 'beer-list', component: BeerListComponent },
+  { path: 'beer/:name', component: BeerDetailComponent },
+  { path: 'new-beer', component: BeerReactiveFormComponent },
+  { path: '', redirectTo: '/beer-list', pathMatch: 'full'}
+];
 
 @NgModule({
   declarations: [
@@ -37,7 +45,8 @@ registerLocaleData(localeFr, 'fr');
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     { provide: CurrentBeerService, useFactory: currentBeerFactory, deps: [DEFAULT_BEER_NAME] },

@@ -2,9 +2,11 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <div class="main">
-    <app-beer-list></app-beer-list>
-    <app-beer-detail></app-beer-detail>
-    <app-beer-reactive-form></app-beer-reactive-form>
-  </div>
+  <nav>
+    <ul>
+      <li><a routerLink="beer-list">Liste</a></li>
+      <li><a routerLink="new-beer">ajouter</a></li>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
 </div>

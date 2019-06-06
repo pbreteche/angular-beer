@@ -3,9 +3,20 @@ h1 {
   text-align: center;
 }
 
-.main {
+ul {
+  list-style-type: none;
+  padding: 0;
   display: flex;
-  * {
-    flex: 1;
+  background: orange;
+}
+
+a {
+  display: block;
+  padding: .5em;
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    background-color: aqua;
   }
 }
