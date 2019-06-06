@@ -12,6 +12,7 @@ import {CurrentBeerService} from './current-beer.service';
 import {BeerCategory} from '../beer';
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { MyCurrencyPipe } from './my-currency.pipe';
 
 const currentBeerFactory = (beerName: string) => {
   const service = new CurrentBeerService();
@@ -29,7 +30,8 @@ registerLocaleData(localeFr, 'fr');
     BeerDetailComponent,
     BeerListComponent,
     BeerFormComponent,
-    BeerReactiveFormComponent
+    BeerReactiveFormComponent,
+    MyCurrencyPipe
   ],
   imports: [
     BrowserModule,
