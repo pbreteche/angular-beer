@@ -11,6 +11,7 @@ import {BeerListService} from '../beer-list.service';
 export class BeerListComponent implements OnInit {
 
   beers: Beer[] = [];
+  today = new Date();
 
   constructor(
     private currentBeer: CurrentBeerService,

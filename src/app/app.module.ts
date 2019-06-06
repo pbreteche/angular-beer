@@ -10,6 +10,8 @@ import {BeerFormComponent} from './beer-form/beer-form.component';
 import {BeerReactiveFormComponent} from './beer-reactive-form/beer-reactive-form.component';
 import {CurrentBeerService} from './current-beer.service';
 import {BeerCategory} from '../beer';
+import {registerLocaleData} from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
 const currentBeerFactory = (beerName: string) => {
   const service = new CurrentBeerService();
@@ -18,6 +20,8 @@ const currentBeerFactory = (beerName: string) => {
 };
 
 const DEFAULT_BEER_NAME = new InjectionToken('defaultBeerName');
+
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [

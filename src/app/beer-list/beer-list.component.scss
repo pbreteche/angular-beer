@@ -13,3 +13,7 @@ li a {
     background: $hoverColor;
   }
 }
+
+.selected {
+  border-left: .5em solid blue;
+}

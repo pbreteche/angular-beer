@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {Beer} from '../beer';
 import {CurrentBeerService} from './current-beer.service';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,13 @@ export class BeerListService {
       .subscribe((beersData: Beer[]) => {
         this.beers = beersData;
         this.beersSubject.next(this.beers);
+        this.currentBeer.beer = beersData[0];
       });
+    this.http.get('assets/beer.json').toPromise()
+      .then((beersData: Beer[]) => {
+        console.log(beersData);
+      })
+      .catch(err => console.log(err));
   }
 
   get beersObservable(): Observable<Beer[]> {
@@ -35,5 +42,9 @@ export class BeerListService {
     this.beers.unshift(beer);
     this.beersSubject.next(this.beers);
     this.currentBeer.beer = beer;
+    this.http.post('http://localhost:8080/api/', beer).pipe(catchError(err => {
+      console.log(err);
+      return of(err);
+    })).subscribe(() => {});
   }
 }
