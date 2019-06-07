@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BeerFormComponent } from './beer-form.component';
+import {FormsModule} from '@angular/forms';
+import {BeerListService} from '../beer-list.service';
+import {Beer} from '../../beer';
 
 describe('BeerFormComponent', () => {
   let component: BeerFormComponent;
@@ -8,7 +11,9 @@ describe('BeerFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BeerFormComponent ]
+      imports: [FormsModule],
+      declarations: [ BeerFormComponent ],
+      providers: [{ provide: BeerListService, useValue: { add(beer: Beer) {}} }]
     })
     .compileComponents();
   }));
