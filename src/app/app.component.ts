@@ -9,7 +9,7 @@ import {LoginService} from './login.service';
 export class AppComponent {
   title = 'Les bières du monde';
 
-  constructor(private loginService: LoginService) {}
+  constructor(public loginService: LoginService) {}
 
   logout() {
     this.loginService.logOut();

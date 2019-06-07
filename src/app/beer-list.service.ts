@@ -19,15 +19,11 @@ export class BeerListService {
   }
 
   init() {
-    // on décalle l'appel ajax juste pour vérifier que l'affichage
-    // se rafraichit bien une fois la donnée réceptionnée
-    setTimeout(() => {
-      this.http.get('assets/beer.json')
-        .subscribe((beersData: Beer[]) => {
-          this.beers = beersData;
-          this.beersSubject.next(this.beers);
-        });
-    }, 1000);
+    this.http.get('assets/beer.json')
+      .subscribe((beersData: Beer[]) => {
+        this.beers = beersData;
+        this.beersSubject.next(this.beers);
+      });
 
     this.http.get('assets/beer.json').toPromise()
       .then((beersData: Beer[]) => {
