@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BeerCategory} from '../../beer';
 import {BeerListService} from '../beer-list.service';
 import {Router} from '@angular/router';
+import {WebStorageSaveService} from '../web-storage-save.service';
 
 @Component({
   selector: 'app-beer-reactive-form',
@@ -16,7 +17,8 @@ export class BeerReactiveFormComponent implements OnInit {
 
   constructor(
     private beerList: BeerListService,
-    private router: Router
+    private router: Router,
+    private webStorage: WebStorageSaveService
   ) { }
 
   ngOnInit() {
@@ -33,10 +35,20 @@ export class BeerReactiveFormComponent implements OnInit {
       ]),
       category: new FormControl(''),
     });
+    const savedData = this.webStorage.load();
+    if (savedData) {
+      this.form.setValue(savedData);
+      this.form.markAllAsTouched();
+    }
   }
 
   createBeer() {
     this.beerList.add(this.form.value);
+    this.webStorage.clear();
     this.router.navigate(['/beer', this.form.get('name').value]);
+  }
+
+  saveBeer() {
+    this.webStorage.save(this.form.value);
   }
 }
